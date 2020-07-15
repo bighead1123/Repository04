@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pzh.dao.StudentDao">
+
+	<!-- 查询学生信息 -->
+	<select id="findStudentById" parameterType="Integer" resultType="Student">
+		select * from students where Id= #{id}
+	</select>
+	<!-- 查询所有学生信息 -->
+	<select id="findall"  resultType="Student">
+			select * from students
+	</select>
+	<!-- 删除信息 -->
+	<delete id="deleteStudentById" parameterType="Integer" >
+		delete from students where Id=#{id}
+	</delete>
+	<!-- 更新信息 -->
+	<update id="updateStudentById" parameterType="Student">
+		update students set
+		name=#{name},age=#{age},gender=#{gender},number=#{number},address=#{address},status=#{status}
+		where Id=#{id}
+	</update>
+	<!-- 增加信息 -->
+	<insert	id="addStudent" parameterType="Student">
+		insert into students(id,name,age,gender,number,address,status)
+		values(#{id},#{name},#{age},#{gender},#{number},#{address},#{status})
+	</insert>
+	
+</mapper>
